@@ -1,18 +1,51 @@
-slot 1 #independant dutch minors
-low_slot_1 = {
+slot 1 #burgundy vassals or other vassals
+burvas_slot_1 = {
 	slot = 1
 	generic = no
 	ai = yes
+	
 	potential = {
 		OR = {
-			tag = UTR
-			tag = GEL
-			tag = FRI
-			tag = GRN
+			tag = BRB
+			tag = HOL
+			tag = LUX
+			tag = FLA
 			}
 	}
 	has_country_shield = no
-
+	
+	ned_sign_abjuration = {
+		icon = mission_rb_monopolize_the_channel
+		required_missions = {  }
+		position = 1
+		
+		provinces_to_highlight = {
+			owned_by = ROOT
+		}
+		
+		trigger = {
+			is_subject = no
+			is_at_war = no
+		}
+		
+		#i wanna add prestige and diplo-rep first
+		
+		effect = {
+			guelders_area = {
+				limit = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				add_permanent_claim = ROOT
+			}
+			netherlands_area = {
+				limit = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				add_permanent_claim = ROOT
+			}
+			100 = {
+				limit = { NOT = { country_or_non_sovereign_subject_holds = ROOT } }
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
 	ned_conquer_holland = {
 		icon = mission_cannons_firing
 		required_missions = { ned_sign_abjuration }
